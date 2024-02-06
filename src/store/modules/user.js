@@ -29,8 +29,9 @@ export default{
                   'Accept': 'application/json'
                 }
         }
-            const response= await  axios.post('http://3.232.244.22/api/register',payload,config) 
-            console.log(response)  
+        console.log(payload)
+            const response= await  axios.post('http://3.232.244.22/api/login',payload,config) 
+            console.log(response.data)  
             commit('SET_USER',response.data)
         }
     },

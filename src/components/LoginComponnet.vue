@@ -8,12 +8,12 @@
           <input type="hidden" name="remember" value="true">
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
-              <label for="email-address" >Email address</label>
-              <input id="email-address" v-model="form.email" required name="email" type="email"  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Email address">
+              <label for="email-address" >email address</label>
+              <input id="email-address" v-model="form.email" required name="email" type="email"  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="email address">
             </div>
             <div>
-              <label for="password" >Password</label>
-              <input id="password" v-model="form.password" required name="password" type="password"  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Password">
+              <label for="password" >password</label>
+              <input id="password" v-model="form.password" required name="password" type="password"  class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="password">
             </div>
           </div>
   
@@ -29,16 +29,18 @@
   
   <script setup>
     import { ref } from 'vue';
+import { useStore } from 'vuex';
   
     const form = ref({
       email: '',
       password: '',
      
     });
-  
+  const store=useStore();
 
   
-    const LoginUser = () => {
+    const LoginUser =async () => {
+      await store.dispatch("user/authenticateUser",form.value)
 
       
       console.log(form.value);
