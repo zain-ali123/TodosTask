@@ -12,13 +12,13 @@
             <input id="email-address" v-model="form.email" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
           </div>
           <div>
-            <label for="password" >Password</label>
-            <input id="password" v-model="form.password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+            <label for="password" >password</label>
+            <input id="password" v-model="form.password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="password">
           </div>
           <div>
-            <label for="password-confirmation" >Password Confirmation</label>
-            <input id="password-confirmation" v-model="form.passwordConfirmation" name="password-confirmation" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password Confirmation">
-            <p v-if="passwordsMismatch" class="text-red-500 text-xs italic">Passwords do not match</p>
+            <label for="password-confirmation" >password Confirmation</label>
+            <input id="password-confirmation" v-model="form.password_confirmation" name="password-confirmation" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="password Confirmation">
+            <p v-if="passwordsMismatch" class="text-red-500 text-xs italic">passwords do not match</p>
           </div>
         </div>
 
@@ -34,25 +34,28 @@
 
 <script setup>
   import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
 
   const form = ref({
     email: '',
     password: '',
-    passwordConfirmation: ''
+    password_confirmation: ''
   });
+  const store=useStore();
 
   const passwordsMismatch = computed(() => {
-    return form.value.password !== form.value.passwordConfirmation;
+    return form.value.password !== form.value.password_confirmation;
   });
 
-  const registerUser = () => {
+  const registerUser =async () => {
     if (passwordsMismatch.value) {
-      console.log('Passwords do not match');
-      
+      console.log('passwords do not match');
+     
       return;
     
-    // console.log(form.value);
     }
+    console.log(form.value)
+    await store.dispatch('user/registerUser',form.value)
   };
 </script>
 
