@@ -48,11 +48,11 @@
   const registerUser = () => {
     if (passwordsMismatch.value) {
       console.log('Passwords do not match');
-      // You can display further error handling logic here
+      
       return;
+    
+    // console.log(form.value);
     }
-    // Here you can add your registration logic
-    console.log(form.value);
   };
 </script>
 
