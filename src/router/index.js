@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import RegisterationView from '../views/RegisterationView.vue'
 import LoginView from '../views/LoginView.vue'
 import CreateTodoView from '../views/CreateTodoView.vue'
+import ReadTodosView from '../views/ReadTodosView.vue'
 const routes = [
   {
     path: '/',
@@ -23,6 +24,11 @@ const routes = [
     path: '/createTodo',
     name: 'createTodo',
     component: CreateTodoView
+  },
+  {
+    path: '/readTodos',
+    name: 'readTodos',
+    component: ReadTodosView
   },
   {
     path: '/about',

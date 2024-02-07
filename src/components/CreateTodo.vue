@@ -28,15 +28,19 @@
   
   <script setup>
     import { ref } from 'vue';
+import { useStore } from 'vuex';
   
     const todo = ref({
       title: '',
       description: ''
     });
+    const store=useStore();
   
-    const createTodo = () => {
-      // Here you can add your logic to create a new todo
-      console.log('Creating todo:', todo.value);
+    const createTodo=async () => {
+      await store.dispatch("todos/createTodo",todo.value)
+
+      
+      console.log(todo.value);
     };
   </script>
   
