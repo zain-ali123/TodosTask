@@ -4,6 +4,7 @@ import RegisterationView from '../views/RegisterationView.vue'
 import LoginView from '../views/LoginView.vue'
 import CreateTodoView from '../views/CreateTodoView.vue'
 import ReadTodosView from '../views/ReadTodosView.vue'
+import ManageTodosView from '../views/ManageTodosView.vue'
 const routes = [
   {
     path: '/',
@@ -29,6 +30,11 @@ const routes = [
     path: '/readTodos',
     name: 'readTodos',
     component: ReadTodosView
+  },
+  {
+    path: '/manageTodos',
+    name: 'manageTodos',
+    component: ManageTodosView
   },
   {
     path: '/about',
