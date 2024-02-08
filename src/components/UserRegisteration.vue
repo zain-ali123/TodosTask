@@ -23,9 +23,9 @@
         </div>
 
         <div>
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <ButtonSuccess type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Register
-          </button>
+          </ButtonSuccess>
         </div>
       </form>
     </div>
@@ -35,6 +35,7 @@
 <script setup>
   import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
+import ButtonSuccess from './buttons/ButtonSuccess.vue';
 
   const form = ref({
     email: '',

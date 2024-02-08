@@ -7,7 +7,7 @@
           <h2 class="text-xl font-semibold mb-2">{{ todo.title }}</h2>
           <p>{{ todo.description }}</p>
         </div>
-        <ButttonSuccess class="w-1/3 mx-auto mt-4" @click="navigateToManageTodos">Manage All Todos</ButttonSuccess>        <div  @scroll="handleScroll" >
+        <ButtonSuccess class="w-1/3 mx-auto mt-4" @click="navigateToManageTodos">Manage All Todos</ButtonSuccess>        <div  @scroll="handleScroll" >
         
     </div>
       </div>
@@ -17,8 +17,8 @@
   <script setup>
   import { onMounted, ref } from 'vue';
   import { useStore } from 'vuex';
-  import ButttonSuccess from '../components/ButtonSuccess.vue';
   import LoaderComponent from './LoaderComponent.vue'
+import ButtonSuccess from './buttons/ButtonSuccess.vue';
   
   const store = useStore();
   const todos = ref([]);

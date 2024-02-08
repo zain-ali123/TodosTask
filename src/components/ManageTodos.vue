@@ -21,10 +21,10 @@
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import LoaderComponent from './LoaderComponent.vue';
-import ButtonEdit from './ButtonEdit.vue';
-import ButtonDanger from './ButtonDanger.vue';
 import PopUp from './PopUp.vue';
 import { defineProps } from 'vue';
+import ButtonEdit from './buttons/ButtonEdit.vue';
+import ButtonDanger from './buttons/ButtonDanger.vue';
 
 const store = useStore();
 const todos = ref([]);

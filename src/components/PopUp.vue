@@ -36,8 +36,9 @@
   
   <script setup>
 import { ref, defineProps, onMounted, watch } from 'vue';
-import ButtonSuccess from './ButtonSuccess.vue';
+
 import { useStore } from 'vuex';
+import ButtonSuccess from './buttons/ButtonSuccess.vue';
 
 const props = defineProps({
   propName: Object
