@@ -1,5 +1,5 @@
 <template>
-<ManageTodos/>
+    <ManageTodos />
 </template>
 
 <script setup>

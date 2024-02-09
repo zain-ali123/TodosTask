@@ -1,5 +1,5 @@
 <template>
-<LoginComponnet/>
+    <LoginComponnet />
 </template>
 
 <script setup>

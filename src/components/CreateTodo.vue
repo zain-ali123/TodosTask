@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
-  >
+  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -12,27 +10,15 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="title">Title</label>
-            <input
-              id="title"
-              v-model="todo.title"
-              name="title"
-              type="text"
-              required
+            <input id="title" v-model="todo.title" name="title" type="text" required
               class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Title"
-            />
+              placeholder="Title" />
           </div>
           <div>
             <label for="description">Description</label>
-            <textarea
-              id="description"
-              v-model="todo.description"
-              name="description"
-              rows="3"
-              required
+            <textarea id="description" v-model="todo.description" name="description" rows="3" required
               class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Description"
-            ></textarea>
+              placeholder="Description"></textarea>
           </div>
         </div>
 
@@ -68,7 +54,7 @@ const createTodo = async () => {
     alert(responseMessage.value);
   }
 
-  router.push('/read-todos')
+  router.push("/read-todos");
 
   console.log(todo.value);
 };

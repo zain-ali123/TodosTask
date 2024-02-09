@@ -1,5 +1,5 @@
 <template>
-<UserRegisteration/>
+    <UserRegisteration />
 </template>
 
 <script setup>
