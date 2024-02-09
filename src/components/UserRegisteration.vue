@@ -36,6 +36,11 @@
   import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 import ButtonSuccess from './buttons/ButtonSuccess.vue';
+import { useRouter } from 'vue-router';
+
+
+  const responseMessage=ref(null)
+  const error=ref(false)
 
   const form = ref({
     email: '',
@@ -43,20 +48,37 @@ import ButtonSuccess from './buttons/ButtonSuccess.vue';
     password_confirmation: ''
   });
   const store=useStore();
+  const router=useRouter();
 
   const passwordsMismatch = computed(() => {
     return form.value.password !== form.value.password_confirmation;
   });
 
   const registerUser =async () => {
-    if (passwordsMismatch.value) {
-      console.log('passwords do not match');
-     
-      return;
-    
-    }
-    console.log(form.value)
-    await store.dispatch('user/registerUser',form.value)
+  
+
+      if (passwordsMismatch.value) {
+        console.log('passwords do not match');
+       
+        return;
+      
+      }
+      console.log(form.value)
+      await store.dispatch('user/registerUser',form.value)
+
+      responseMessage.value=store.getters['user/getResponseMessage']
+      alert(responseMessage.value)
+
+      error.value=store.getters['user/getError']
+      // console.log(error.value)
+      if(error.value==false){
+        // console.log("in if")
+        router.push('/')
+      }
+
+
+
+
   };
 </script>
 

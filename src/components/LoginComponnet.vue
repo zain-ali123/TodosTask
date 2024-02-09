@@ -31,6 +31,10 @@
     import { ref } from 'vue';
 import { useStore } from 'vuex';
 import ButtonSuccess from './buttons/ButtonSuccess.vue';
+import { useRouter } from 'vue-router';
+
+const responseMessage=ref('');
+const error=ref(false)
   
     const form = ref({
       email: '',
@@ -38,10 +42,22 @@ import ButtonSuccess from './buttons/ButtonSuccess.vue';
      
     });
   const store=useStore();
+  const router=useRouter();
 
   
     const LoginUser =async () => {
       await store.dispatch("user/authenticateUser",form.value)
+
+      responseMessage.value=store.getters['user/getResponseMessage']
+      alert(responseMessage.value)
+
+      error.value=store.getters['user/getError']
+      if(error.value==false){
+        if(localStorage.getItem('token')){
+          
+          router.push('/')
+        }
+      }
 
       
       console.log(form.value);

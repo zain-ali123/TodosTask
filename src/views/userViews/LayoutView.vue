@@ -1,0 +1,9 @@
+<template>
+  <Navbar />
+  <!-- <RouterView/> -->
+  <router-view/>
+</template>
+
+<script setup>
+import Navbar from "../../components/segments/Navbar.vue";
+</script>

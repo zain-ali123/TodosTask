@@ -1,47 +1,89 @@
 import {  createRouter, createWebHashHistory } from 'vue-router'
+
 import RegisterationView from '../views/RegisterationView.vue'
 import LoginView from '../views/LoginView.vue'
-import CreateTodoView from '../views/CreateTodoView.vue'
-import ReadTodosView from '../views/ReadTodosView.vue'
-import ManageTodosView from '../views/ManageTodosView.vue'
-import WelcomePageView from '../views/WelcomePageView.vue'
+
+import CreateTodoView from '../views/userViews/CreateTodoView.vue'
+import ReadTodosView from '../views/userViews/ReadTodosView.vue'
+import ManageTodosView from '../views/userViews//ManageTodosView.vue'
+import LayoutView from '../views/userViews/LayoutView'
+
+import WelcomePageView from '../views/visitorViews/WelcomePageView.vue'
 const routes = [
   {
     path:'/',
     name:"welcomePage",
-    component:WelcomePageView
+    component:WelcomePageView,
+    meta: { requiresGuest: true }
   },
    {
     path: '/registeration',
     name: 'registeration',
-    component: RegisterationView
+    component: RegisterationView,
+    meta: { requiresGuest: true }
   },
   {
     path: '/login',
     name: 'login',
-    component: LoginView
+    component: LoginView,
+    meta: { requiresGuest: true }
   },
   {
-    path: '/createTodo',
-    name: 'createTodo',
-    component: CreateTodoView
+    path:'/',
+    name:'layout',
+    component:LayoutView,
+    meta: { requiresAuth: true },
+    children:[
+
+        
+      {
+        path: '',
+        name: 'readTodos',
+        component: ReadTodosView,
+       
+      },
+      {
+
+        path: 'create-todo',
+        name: 'createTodo',
+        component: CreateTodoView,
+      
+      },
+  
+      {
+        path: 'manage-todo',
+        name: 'manageTodos',
+        component: ManageTodosView
+      },
+
+    ]
   },
-  {
-    path: '/readTodos',
-    name: 'readTodos',
-    component: ReadTodosView
-  },
-  {
-    path: '/manageTodos',
-    name: 'manageTodos',
-    component: ManageTodosView
-  },
+
+
  
 ]
+
+
+
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+
+
+
+router.beforeEach((to, from, next) => {
+  const userAuthenticated = localStorage.getItem("token");
+
+  if (to.meta.requiresAuth && !userAuthenticated) {
+    next({ name: 'WelcomePageView' });
+  } else if (to.meta.requiresGuest && userAuthenticated) {
+    next({ name: 'layout' });
+  } else {
+    next();
+  }
+});
 
 export default router
