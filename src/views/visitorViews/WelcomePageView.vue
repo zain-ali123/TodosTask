@@ -4,4 +4,5 @@
 
 <script setup>
 
-import WelcomePage from '@/components/WelcomePage.vue';</script>
+import WelcomePage from '@/components/WelcomePage.vue';
+</script>

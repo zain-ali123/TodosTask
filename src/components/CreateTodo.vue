@@ -68,7 +68,7 @@ const createTodo = async () => {
     alert(responseMessage.value);
   }
 
-  // router.push('/')
+  router.push('/read-todos')
 
   console.log(todo.value);
 };

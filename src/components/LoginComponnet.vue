@@ -55,16 +55,12 @@ const error=ref(false)
       if(error.value==false){
         if(localStorage.getItem('token')){
           
-          router.push('/')
+          router.push('/read-todos')
         }
       }
 
       
-      console.log(form.value);
+      // console.log(form.value);
     };
   </script>
-  
-  <style scoped>
-    /* Add any custom styles here */
-  </style>
   

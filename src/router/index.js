@@ -35,7 +35,7 @@ const routes = [
     meta: { requiresAuth: true },
     children: [
       {
-        path: 'read-todos',
+        path: '/read-todos',
         name: 'readTodos',
         component: ReadTodosView,
       },

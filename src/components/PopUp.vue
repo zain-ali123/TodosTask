@@ -15,7 +15,7 @@
                   Edit Todo
                 </h3>
                 <div class="mt-2">
-                   <label for="title"><Title></Title></label>  
+                   <label for="title">Title</label>  
                   <input v-model="title" type="text" class="block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" placeholder="Title">
                   <textarea v-model="description" class="mt-3 block w-full shadow-sm sm:text-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" rows="3" placeholder="Description"></textarea>
                 </div>
@@ -39,6 +39,7 @@ import { ref, defineProps, onMounted, watch } from 'vue';
 
 import { useStore } from 'vuex';
 import ButtonSuccess from './buttons/ButtonSuccess.vue';
+import { useRouter } from 'vue-router';
 
 
 const props = defineProps({
@@ -52,9 +53,8 @@ const store=useStore();
 const emit=defineEmits();
 const error = ref(false);
 const responseMessage = ref("");
+const router=useRouter();
 
-
-// Watch for changes in the props and update the refs accordingly
 watch(() => props.propName, (newValue) => {
   if (newValue) {
     title.value = newValue.title ?? '';
@@ -73,17 +73,8 @@ const saveChanges =async () => {
     else{
 
       emit('closePopup')
+      router.push('/read-todos')
+      
     }
 };
-
-const emitClosePopup = () => {
-  // Emit event to close the popup
-  emit('closePopup');
-};
 </script>
-
-  
-  <style scoped>
-  /* Add any custom styles here */
-  </style>
-  

@@ -11,7 +11,7 @@
   
   <style scoped>
   .loader {
-    border-top-color: #3498db; /* You can customize loader colors */
+    border-top-color: #3498db; 
   }
   </style>
   

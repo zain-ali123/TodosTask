@@ -58,12 +58,12 @@ import { useRouter } from 'vue-router';
   
 
       if (passwordsMismatch.value) {
-        console.log('passwords do not match');
+        // console.log('passwords do not match');
        
         return;
       
       }
-      console.log(form.value)
+      // console.log(form.value)
       await store.dispatch('user/registerUser',form.value)
 
       responseMessage.value=store.getters['user/getResponseMessage']
@@ -81,7 +81,3 @@ import { useRouter } from 'vue-router';
 
   };
 </script>
-
-<style scoped>
-  /* Add any custom styles here */
-</style>

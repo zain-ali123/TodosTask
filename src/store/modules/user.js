@@ -53,15 +53,15 @@ export default {
           Accept: "application/json",
         },
       };
-      console.log(payload);
+      // console.log(payload);
       try {
         const response = await axios.post(
           "http://3.232.244.22/api/login",
           payload,
           config
         );
-        console.log("response", response);
-        console.log(response.data.user.token);
+        // console.log("response", response);
+        // console.log(response.data.user.token);
         localStorage.setItem("token", response.data.user.token);
 
         commit("SET_USER", response.data.user);
@@ -90,12 +90,14 @@ export default {
           payload,
           config
         );
-        console.log(response);
+        // console.log(response);
         localStorage.removeItem("token");
         commit("SET_RESPONSE_MESSAGE", "");
         commit("SET_ERROR", false);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
+        commit("SET_RESPONSE_MESSAGE", "Error loging out user");
+        commit("SET_ERROR", true);
       }
     },
   },

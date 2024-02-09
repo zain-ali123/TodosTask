@@ -29,7 +29,7 @@ export default {
 
         commit("SET_RESPONSE_MESSAGE", "");
         commit("SET_ERROR", false);
-          console.log("helloooo?>>>>>>>>>>>>>>>>>")
+          // console.log("helloooo?>>>>>>>>>>>>>>>>>")
           const userToken=localStorage.getItem("token")
         const config = {
           headers: {
@@ -42,7 +42,7 @@ export default {
           payload,
           config
         );
-        console.log(response)
+        // console.log(response)
         commit("SET_RESPONSE_MESSAGE", '');
         commit("SET_ERROR", false);
       }
@@ -55,7 +55,7 @@ export default {
       try{
         commit("SET_RESPONSE_MESSAGE", "");
         commit("SET_ERROR", false);
-        console.log("heloooooo")
+        // console.log("heloooooo")
         const userToken=localStorage.getItem("token")
         const config = {
             headers: {
@@ -66,7 +66,7 @@ export default {
                 "http://3.232.244.22/api/items",
                 config
               );
-              console.log(response.data.items.data)
+              // console.log(response.data.items.data)
               commit("SET_TODOS",response.data.items.data)
               commit("SET_RESPONSE_MESSAGE", '');
               commit("SET_ERROR", false);
@@ -87,9 +87,9 @@ export default {
                   Authorization: `Bearer ${userToken}`,
               },
           }
-          console.log("id in action is>>>>>>",payload)
+          // console.log("id in action is>>>>>>",payload)
           const response =await axios.delete(`http://3.232.244.22/api/item/${payload}`,config) 
-          console.log("response>>>>>>>>>>>>>>",response)   
+          // console.log("response>>>>>>>>>>>>>>",response)   
           
         commit("SET_RESPONSE_MESSAGE", "");
         commit("SET_ERROR", false);  
@@ -108,7 +108,7 @@ export default {
         // console.log("payload gt",payload)
   
         const userToken=localStorage.getItem("token")
-        console.log(userToken)
+        // console.log(userToken)
         const config = {
           headers: {
               Authorization: `Bearer ${userToken}`,
@@ -117,9 +117,9 @@ export default {
         const obj={
           title:payload.title,
           description:payload.description}
-          console.log("obje>>>>",obj)
+          // console.log("obje>>>>",obj)
         const response= await axios.put(`http://3.232.244.22/api/item/${payload.id}`,obj,config)
-        console.log("respobse>>>>",response)
+        // console.log("respobse>>>>",response)
         commit("SET_RESPONSE_MESSAGE", "");
         commit("SET_ERROR", false);  
       }
