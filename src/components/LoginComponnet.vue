@@ -49,8 +49,8 @@ const error=ref(false)
       await store.dispatch("user/authenticateUser",form.value)
 
       responseMessage.value=store.getters['user/getResponseMessage']
+      
       alert(responseMessage.value)
-
       error.value=store.getters['user/getError']
       if(error.value==false){
         if(localStorage.getItem('token')){

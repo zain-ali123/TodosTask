@@ -45,6 +45,7 @@ export default {
       }
     },
     async authenticateUser({ commit }, payload) {
+      
       commit("SET_RESPONSE_MESSAGE", "");
       commit("SET_ERROR", false);
       const config = {

@@ -11,12 +11,12 @@ import LayoutView from '../views/userViews/LayoutView'
 import WelcomePageView from '../views/visitorViews/WelcomePageView.vue'
 const routes = [
   {
-    path:'/',
-    name:"welcomePage",
-    component:WelcomePageView,
+    path: '/',
+    name: 'welcomePage',
+    component: WelcomePageView,
     meta: { requiresGuest: true }
   },
-   {
+  {
     path: '/registeration',
     name: 'registeration',
     component: RegisterationView,
@@ -29,39 +29,30 @@ const routes = [
     meta: { requiresGuest: true }
   },
   {
-    path:'/',
-    name:'layout',
-    component:LayoutView,
+    path: '/',
+    name: 'layout',
+    component: LayoutView,
     meta: { requiresAuth: true },
-    children:[
-
-        
+    children: [
       {
-        path: '',
+        path: 'read-todos',
         name: 'readTodos',
         component: ReadTodosView,
-       
       },
       {
-
         path: 'create-todo',
         name: 'createTodo',
         component: CreateTodoView,
-      
       },
-  
       {
         path: 'manage-todo',
         name: 'manageTodos',
         component: ManageTodosView
-      },
-
+      }
     ]
-  },
-
-
- 
+  }
 ]
+
 
 
 

@@ -18,11 +18,11 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import {  onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import LoaderComponent from './LoaderComponent.vue';
 import PopUp from './PopUp.vue';
-import { defineProps } from 'vue';
+
 import ButtonEdit from './buttons/ButtonEdit.vue';
 import ButtonDanger from './buttons/ButtonDanger.vue';
 
@@ -30,13 +30,23 @@ const store = useStore();
 const todos = ref([]);
 const loading = ref(true);
 
+const error = ref(false);
+const responseMessage = ref("");
+
 const isEditPopupOpen = ref(false);
 const todoToBeEdit = ref(null);
+
 
 onMounted(async () => {
   try {
     await store.dispatch("todos/readTodos");
     todos.value = store.getters["todos/getTodos"].slice(0,5);
+    responseMessage.value = store.getters["user/getResponseMessage"];
+    error.value = store.getters["user/getError"];
+    if (error.value == true) {
+      alert(responseMessage.value);
+    }
+
     window.addEventListener('scroll', handleScroll);
   } finally {
     loading.value = false;
@@ -61,12 +71,14 @@ const deleteTodo = async (id) => {
     await store.dispatch("todos/deleteTodo", id);
     await store.dispatch("todos/readTodos");
     todos.value = store.getters["todos/getTodos"];
+    responseMessage.value = store.getters["user/getResponseMessage"];
+    error.value = store.getters["user/getError"];
+    if (error.value == true) {
+      alert(responseMessage.value);
+    }
   }
 };
 
-
-
-// const visibleTodos = computed(() => todos.value);
 var windowScrolled= ref(0)
 
 const handleScroll =  () => {

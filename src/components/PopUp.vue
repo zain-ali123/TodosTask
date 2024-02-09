@@ -40,6 +40,7 @@ import { ref, defineProps, onMounted, watch } from 'vue';
 import { useStore } from 'vuex';
 import ButtonSuccess from './buttons/ButtonSuccess.vue';
 
+
 const props = defineProps({
   propName: Object
 });
@@ -49,7 +50,8 @@ const description = ref('');
 const id=ref('')
 const store=useStore();
 const emit=defineEmits();
-
+const error = ref(false);
+const responseMessage = ref("");
 
 
 // Watch for changes in the props and update the refs accordingly
@@ -63,8 +65,15 @@ watch(() => props.propName, (newValue) => {
 
 const saveChanges =async () => {
    await store.dispatch("todos/updateTodo",{title:title.value,description:description.value,id:id.value})
-   
-   emit('closePopup')
+   responseMessage.value = store.getters["todos/getResponseMessage"];
+    error.value = store.getters["todos/getError"];
+    if (error.value == true) {
+      alert(responseMessage.value);
+    }
+    else{
+
+      emit('closePopup')
+    }
 };
 
 const emitClosePopup = () => {
