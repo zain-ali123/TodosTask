@@ -22,8 +22,9 @@
           </div>
         </div>
 
-        <div>
+        <div class="">
           <ButtonSuccess type="submit"> Create Todo </ButtonSuccess>
+          <ButtonSuccess class="" @click="routeToReadTodos" type="submit"> View My Todos</ButtonSuccess>
         </div>
       </form>
     </div>
@@ -58,4 +59,9 @@ const createTodo = async () => {
 
   console.log(todo.value);
 };
+
+const routeToReadTodos=()=>{
+
+  router.push('/read-todos')
+}
 </script>

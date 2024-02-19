@@ -29,6 +29,6 @@ const redirectToLogin = () => {
 };
 
 const redirectToRegister = () => {
-  router.push("/register");
+  router.push("/registeration");
 };
 </script>

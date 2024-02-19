@@ -73,7 +73,7 @@ export default {
         commit("SET_ERROR", false);
       }
     },
-    async deleteTodo(_, payload) {
+    async deleteTodo({commit}, payload) {
       try {
         commit("SET_RESPONSE_MESSAGE", "");
         commit("SET_ERROR", false);
