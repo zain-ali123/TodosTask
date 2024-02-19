@@ -29,7 +29,7 @@
             Register
           </ButtonSuccess>
           <ButtonSuccess  @click="routeToWelcomePage" type="submit">
-            Back
+            Home
           </ButtonSuccess>
         </div>
       </form>

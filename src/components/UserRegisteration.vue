@@ -7,6 +7,12 @@
         </h2>
       </div>
       <form class="mt-8 space-y-6" @submit.prevent="registerUser">
+        <div class="flex text-sm items-center justify-center ">
+          <p>Already have an account? </p>
+          <RouterLink to="/login" class="text-blue-600 hover:text-blue-700 mx-1">Login</RouterLink>
+
+        </div>
+
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -38,9 +44,7 @@
           <ButtonSuccess type="submit">
             Register
           </ButtonSuccess>
-          <ButtonSuccess  @click="routeToWelcomePage" type="submit">
-            Back
-          </ButtonSuccess>
+ 
 
         </div>
       </form>
@@ -89,7 +93,5 @@ const registerUser = async () => {
   }
 };
 
-const routeToWelcomePage=()=>{
-  router.push('/')
-}
+
 </script>
